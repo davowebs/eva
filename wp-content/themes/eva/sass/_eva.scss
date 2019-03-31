@@ -1,0 +1,286 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    color:#333;
+    font-weight: normal;
+    box-sizing: border-box;
+    background: #f9f9f9;
+    font-size: 0.8em;
+}
+p {
+    line-height: 20px;
+}
+.site-header {
+    padding:30px 10px;
+    background:#fff;
+}
+.site-content {
+    padding:40px 10px;
+    background: #eaeaea;
+    background: -moz-linear-gradient(top, #fff 0%, #eaeaea 100%);
+    background: -webkit-linear-gradient(top, #fff 0%, #eaeaea 100%);
+    background: linear-gradient(to bottom, #fff 0%, #eaeaea 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#fffeaeaeafff',GradientType=0 );
+}
+.roi-calculator {
+    &__header {
+        padding:0 0 20px 0;
+    }
+    &__title {
+        color:#000;
+        letter-spacing: 1px;
+        span {
+            border-bottom:2px solid #FCC026;
+        }
+    }
+    
+}
+.calculator {
+    background: #fbfbfb;
+    border-radius: 2px;
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.18);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.18);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.18);
+    animation-duration: 2s;
+    animation-name: slidein;
+    margin-left:10px;
+    margin-right:10px;
+    @keyframes slidein {
+        from {
+            margin-top: 60px;
+            opacity:0.6;
+        }
+        
+        to {
+            margin-top: 0;
+            opacity: 1;
+        }
+    }
+
+    &__values {
+        padding:30px 30px 50px 30px;
+    }
+    &__subheading {
+        margin: 20px 0 30px 0;
+        color: #a0a0a0;
+        font-weight: 400;
+    }
+    &__parameter {
+        margin: 30px 0 0 0;
+        color: #505050;
+        font-weight: 400;
+    }
+    &__desc {
+        color:#a0a0a0;
+        font-size: 13px;
+        margin:5px 0 0 0;
+        font-weight: 300;
+    }
+    &__slider {
+        margin-top: 15px;
+        border-radius: 20px;
+        -webkit-appearance: none; 
+        appearance: none;
+        width: 80%; 
+        height: 15px; 
+        background: #eaeaea;
+        outline: none; 
+        opacity: 0.7;
+        -webkit-transition: .2s; 
+        transition: opacity .2s;
+        overflow: hidden;
+        &::-webkit-slider-thumb {
+            background: #FCC026;
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px; 
+            height: 20px; 
+            cursor: pointer; 
+            border-radius: 50%;
+            border:4px solid #fff;
+            box-shadow: -100.5vw 0 0 100vw #FCC026;
+        }
+        &::-moz-range-thumb {
+            background: #FCC026;
+            border:4px solid #fff;
+            border-radius: 50%;
+        }
+        &::-moz-range-progress {
+            background: #FCC026;
+            height:20px;
+        }
+
+        &::-ms-fill-lower  {
+            background: #000;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    &__label {
+        text-align: center;
+        font-size: 12px;
+        padding: 5px 0;
+        margin-left: 5px;
+        vertical-align: text-bottom;
+        border-radius: 5px;
+        color: #929292;
+        width: 30px;
+        display: inline-block;
+        background: #fff;
+        border: 1px solid #eee;
+    }
+    &__result {
+        position: relative;
+        height:100%;
+        background: #eaeaea;
+        background: -moz-linear-gradient(top, #fff 0%, #eaeaea 100%);
+        background: -webkit-linear-gradient(top, #fff 0%, #eaeaea 100%);
+        background: linear-gradient(to bottom, #fff 0%, #eaeaea 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fff', endColorstr='#fffeaeaeafff',GradientType=0 );
+    }
+    &__result-box{
+        padding:30px 0;
+        &.one {
+            background: #f5f5f5;
+            padding:50px 0;
+        }
+        &.two {
+            background: #f1f1f1;
+        }
+        &.three {
+            background: #f5f5f5;
+        }
+        &.four {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .calculate {
+                background: #FCC026;
+                padding:15px 50px;
+                color:#000;
+                border:0;
+                border-radius: 30px;
+                text-transform: uppercase;
+                cursor: pointer;
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+    .savings, .payback {
+        &:before {
+            content:'£';
+            margin-right: 2px;
+            font-size: 16px;
+        }
+    }
+    .savings {
+        font-size: 40px;
+        font-weight: bold;
+        &:before {
+            font-size: 40px;
+        }
+    }
+    .first-year {
+        font-size:13px;
+        margin-top: 10px;
+        color: #a0a0a0;
+    }
+}
+
+#overlay { 
+    position:absolute;
+    height:100%;
+    width:100%;
+    background:rgb(177, 177, 177);
+    opacity:.9;
+    z-index:2;
+    display:none;
+}
+#loading {
+    position:absolute;
+    left: 0; 
+    right: 0; 
+    top:0;
+    bottom:0;
+    margin-top:auto;
+    margin-bottom:auto;
+    margin-left: auto; 
+    margin-right: auto; 
+    z-index:3;
+    display:none;
+    -webkit-animation:spin 1s linear infinite;
+    -moz-animation:spin 1s linear infinite;
+    animation:spin 1s linear infinite;
+}
+
+.currency {
+    display: block;
+    margin: 30px auto 0 auto;
+    font-size: 12px;
+    color:#666;
+    text-decoration: underline;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+@media (min-width:768px) {
+    body {
+        font-size:1em;
+    }
+    .site-header {
+        padding:40px 0;
+    }
+    .site-content {
+        height:300px;
+        overflow-x:visible;
+    }
+    .roi-calculator {
+        &__header {
+            padding:0 0 50px 0;
+        }
+    }
+    .calculator {
+        &__values {
+            padding:30px 30px 50px 50px;
+        }
+    }
+    .calculator__result-box {
+        &.four {
+            .calculate {
+                margin-top:50px;
+                padding:15px 30px;
+            }
+        }
+    }
+    .calculator {
+        .savings {
+            font-size:30px;
+            &::before {
+                font-size: 30px;
+            }
+        }
+    }
+}
+
+@media (min-width:1000px) {
+    .calculator__result-box {
+        &.four {
+            .calculate {
+                padding:15px 50px;
+            }
+        }
+    }
+    .calculator {
+        .savings {
+            font-size:40px;
+            &::before {
+                font-size: 40px;
+            }
+        }
+    }
+}

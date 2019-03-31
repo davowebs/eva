@@ -4,8 +4,8 @@ gitignore file
 /wp-content/upgrade
 /wp-content/uploads
 /sitemap.*
-/wp-config.php
-*.sql
+#/wp-config.php
+#*.sql
 
 # Hidden files
 *.DS_Store
